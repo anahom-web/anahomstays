@@ -31,7 +31,22 @@ export default function Intro() {
   useEffect(() => {
     if (!show || prefersReduced) return;
     window.__lenis?.stop();
-    document.documentElement.style.overflow = "hidden";
+
+    // Scroll lock WITHOUT touching the document's overflow. Setting
+    // overflow:hidden on <html> makes WebKit tear down its
+    // position:sticky machinery, and it doesn't reliably re-attach when
+    // the lock is released — the pinned scenes then scroll like static
+    // blocks until some later relayout (the Safari "torn scenes on
+    // first load" bug). Swallowing the gestures leaves the scroll
+    // container untouched, so sticky never detaches.
+    const swallow = (e) => e.preventDefault();
+    const swallowKeys = (e) => {
+      if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(e.key))
+        e.preventDefault();
+    };
+    window.addEventListener("wheel", swallow, { passive: false });
+    window.addEventListener("touchmove", swallow, { passive: false });
+    window.addEventListener("keydown", swallowKeys);
 
     let cancelled = false;
     const controls = animate(0, 100, {
@@ -63,6 +78,9 @@ export default function Intro() {
     return () => {
       cancelled = true;
       controls.stop();
+      window.removeEventListener("wheel", swallow);
+      window.removeEventListener("touchmove", swallow);
+      window.removeEventListener("keydown", swallowKeys);
     };
   }, [show, prefersReduced]);
 
@@ -74,7 +92,6 @@ export default function Intro() {
       /* private mode — fine */
     }
     window.__lenis?.start();
-    document.documentElement.style.overflow = "";
   }, [show]);
 
   if (prefersReduced) return null;

@@ -49,7 +49,7 @@ export default function Hero() {
     >
       <motion.div
         style={{ opacity: shotOpacity }}
-        className="sticky top-0 h-svh overflow-hidden bg-anahom-charcoal"
+        className="sticky top-0 h-svh overflow-hidden bg-anahom-charcoal [transform:translateZ(0)]"
       >
         {/* Media layer — scroll-linked drift wraps a slow settling zoom */}
         <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 will-change-transform">

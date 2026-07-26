@@ -123,7 +123,7 @@ export default function Philosophy() {
       className="relative z-0 -mt-[140svh] bg-anahom-charcoal"
       style={{ height: "360svh" }}
     >
-      <div className="sticky top-0 h-svh overflow-hidden">
+      <div className="sticky top-0 h-svh overflow-hidden [transform:translateZ(0)]">
         {/* The held frame — one image, held for the whole scene */}
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 will-change-transform">
           <Frame
