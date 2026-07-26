@@ -54,7 +54,22 @@ export default function Contact() {
       toast.success("Thank you — we'll be in touch soon.");
       setForm({ name: "", email: "", phone: "", message: "", intent: "homeowner" });
     } catch (err) {
-      toast.error("Something went wrong. Please try WhatsApp or email.");
+      // An enquiry is too valuable to drop. If the submission endpoint is
+      // unavailable, hand the message to the visitor's mail app with
+      // everything already written, so it still reaches the founders.
+      const subject = `Anahom enquiry — ${form.name}`;
+      const body = [
+        `Name: ${form.name}`,
+        `Email: ${form.email}`,
+        form.phone && `Phone: ${form.phone}`,
+        `I am a: ${form.intent}`,
+        "",
+        form.message,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      toast.error("We couldn't send that from here — opening your email instead.");
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     } finally {
       setLoading(false);
     }

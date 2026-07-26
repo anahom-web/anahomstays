@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form declarations</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+    Netlify discovers forms by parsing the HTML it receives at deploy
+    time. It never runs React, so it can never see the real form in the
+    app. This file exists purely to declare that form's shape.
+
+    Field names MUST stay in sync with src/components/site/Contact.jsx.
+    Detection happens on DEPLOY — enabling "Form detection" in the
+    Netlify UI does nothing until the next deploy runs.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="intent" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+  </body>
+</html>

@@ -49,7 +49,12 @@ export default function Hero() {
     >
       <motion.div
         style={{ opacity: shotOpacity }}
-        className="sticky top-0 h-svh overflow-hidden bg-anahom-charcoal [transform:translateZ(0)]"
+        /* The frame is sized to the LARGEST possible viewport (lvh), so
+           when iOS retracts its toolbar the photograph still covers the
+           screen — a dvh/svh box would leave a strip at the bottom and
+           the next scene would show through it. Text lives in a nested
+           dvh box so it stays inside the area actually visible. */
+        className="sticky top-0 h-lvh overflow-hidden bg-anahom-charcoal [transform:translateZ(0)]"
       >
         {/* Media layer — scroll-linked drift wraps a slow settling zoom */}
         <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 will-change-transform">
@@ -73,6 +78,9 @@ export default function Hero() {
         <div className="absolute inset-0 bg-anahom-charcoal/40" />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-anahom-charcoal/60 to-transparent" />
 
+        {/* Everything readable sits inside the visible viewport, even
+            though the frame above extends past it. */}
+        <div className="absolute inset-x-0 top-0 h-dvh z-10">
         {/* Moment one — headline */}
         <motion.div
           style={{ y: p1Y, opacity: p1Opacity }}
@@ -138,6 +146,7 @@ export default function Hero() {
             />
           </div>
         </motion.div>
+        </div>
       </motion.div>
     </section>
   );

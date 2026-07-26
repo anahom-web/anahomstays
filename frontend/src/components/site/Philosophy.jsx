@@ -123,7 +123,10 @@ export default function Philosophy() {
       className="relative z-0 -mt-[140svh] bg-anahom-charcoal"
       style={{ height: "360svh" }}
     >
-      <div className="sticky top-0 h-svh overflow-hidden [transform:translateZ(0)]">
+      {/* Sized to the largest possible viewport so the held frame always
+          covers the screen when iOS retracts its toolbar; the words sit
+          in a nested dvh box so they stay within the visible area. */}
+      <div className="sticky top-0 h-lvh overflow-hidden [transform:translateZ(0)]">
         {/* The held frame — one image, held for the whole scene */}
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 will-change-transform">
           <Frame
@@ -138,6 +141,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 bg-anahom-charcoal/60" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-anahom-charcoal/40 to-transparent" />
 
+        <div className="absolute inset-x-0 top-0 h-dvh z-10">
         {/* Moment 0 — the scene title */}
         <Moment progress={scrollYProgress} index={0} total={total}>
           <div className="text-center">
@@ -178,6 +182,7 @@ export default function Philosophy() {
           <div className="h-px bg-anahom-white/15 overflow-hidden">
             <motion.div style={{ scaleX: barScaleX }} className="h-full bg-anahom-bronze origin-left" />
           </div>
+        </div>
         </div>
       </div>
     </section>
