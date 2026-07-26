@@ -6,8 +6,9 @@ import { SLOGAN } from "../../lib/brand";
 
 /**
  * Scene 1 — the establishing shot.
- * One image is held on screen across 230vh of scroll while two moments
- * unfold over it: the opening headline, then the founding belief.
+ * One image is held on screen while two moments unfold over it: the
+ * opening headline, then the founding belief. The shot then dissolves
+ * into the philosophy scene rather than cutting to it.
  */
 const HERO_ID = "20_oyfxs5";
 
@@ -33,21 +34,29 @@ export default function Hero() {
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
+  // The shot dissolves rather than cutting. Philosophy is already pinned
+  // and painted underneath, so as this fades the next scene is simply
+  // revealed — no hard seam between two images, and no dark band while
+  // the second photograph loads.
+  const shotOpacity = useTransform(scrollYProgress, [0.60, 0.94], [1, 0]);
+
   return (
     <section
       id="top"
       ref={ref}
       data-testid="hero-section"
-      className="relative h-[190svh] bg-anahom-charcoal"
+      className="relative z-10 h-[190svh]"
     >
-      <div className="sticky top-0 h-svh overflow-hidden">
+      <motion.div
+        style={{ opacity: shotOpacity }}
+        className="sticky top-0 h-svh overflow-hidden bg-anahom-charcoal"
+      >
         {/* Media layer — scroll-linked drift wraps a slow settling zoom */}
         <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 will-change-transform">
           <Frame
             id={HERO_ID}
             w={2000}
             eager
-            priority
             sizes="100vw"
             testId="hero-image"
             alt="A lime-washed Anahom living room with soft arches, olive trees and morning light"
@@ -129,7 +138,7 @@ export default function Hero() {
             />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

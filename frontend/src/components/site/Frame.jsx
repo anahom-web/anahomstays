@@ -29,7 +29,6 @@ export default function Frame({
   className = "",
   imgClassName = "",
   eager = false,
-  priority = false,
   sizes = "100vw",
   motionProps,
   style,
@@ -88,7 +87,6 @@ export default function Frame({
           sizes={sizes}
           alt={alt}
           decoding="async"
-          fetchPriority={priority ? "high" : undefined}
           onLoad={() => setLoaded(true)}
           draggable={false}
           data-testid={testId}

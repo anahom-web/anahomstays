@@ -24,30 +24,32 @@ const STATEMENTS = [
 // whole scene while the words move through it — nothing floats over it.
 const BG_ID = "16_m4mnqx";
 
-// Moments finish by 62% of the scene; the remainder is a held frame
-// that the next scene rises over. Keep SLOT_END below
-// 1 - (overlap / pinned range) or the sheet covers the last statement.
-const SLOT_START = 0.02;
-const SLOT_END = 0.62;
+// This scene is pulled up a full screen so it sits already-painted
+// beneath the hero, which dissolves into it — the hero has finished
+// fading by the time this section's own progress begins, so the words
+// can start almost immediately. Keep SLOT_END below
+// 1 - (next overlap / pinned range), or the sheet that follows covers
+// the last statement.
+const SLOT_START = 0.15;
+const SLOT_END = 0.66;
 
 function Moment({ progress, index, total, children, testId, className = "" }) {
   const slot = (SLOT_END - SLOT_START) / total;
   const start = SLOT_START + index * slot;
   const end = start + slot;
   const fade = slot * 0.32;
-  const isFirst = index === 0;
   const isLast = index === total - 1;
 
+  // Every moment fades in at its own slot — including the first, which
+  // must NOT be visible at progress 0 or it would appear underneath the
+  // hero while that shot is still dissolving, showing two headlines at
+  // once. The last one stays up, since the next scene slides over it.
   const opacity = useTransform(
     progress,
-    isFirst
-      ? [0, end - fade, end]
-      : isLast
-        ? [start, start + fade]
-        : [start, start + fade, end - fade, end],
-    isFirst ? [1, 1, 0] : isLast ? [0, 1] : [0, 1, 1, 0],
+    isLast ? [start, start + fade] : [start, start + fade, end - fade, end],
+    isLast ? [0, 1] : [0, 1, 1, 0],
   );
-  const y = useTransform(progress, [start, end], isFirst ? [0, -40] : [40, isLast ? 0 : -40]);
+  const y = useTransform(progress, [start, end], [40, isLast ? 0 : -40]);
 
   return (
     <motion.div
@@ -118,8 +120,8 @@ export default function Philosophy() {
       id="philosophy"
       ref={ref}
       data-testid="philosophy-section"
-      className="relative z-0 bg-anahom-charcoal"
-      style={{ height: "320svh" }}
+      className="relative z-0 -mt-[140svh] bg-anahom-charcoal"
+      style={{ height: "360svh" }}
     >
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* The held frame — one image, held for the whole scene */}
