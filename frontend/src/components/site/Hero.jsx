@@ -38,7 +38,7 @@ export default function Hero() {
       id="top"
       ref={ref}
       data-testid="hero-section"
-      className="relative h-[230vh] bg-anahom-charcoal"
+      className="relative h-[190svh] bg-anahom-charcoal"
     >
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* Media layer — scroll-linked drift wraps a slow settling zoom */}

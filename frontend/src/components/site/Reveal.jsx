@@ -146,48 +146,29 @@ export const RevealChars = ({
 };
 
 /**
- * Curtain reveal — the signature image treatment.
+ * Unveil — the image treatment.
  *
- * Rather than covering the frame and sliding a panel away, the frame is
- * *uncovered*: a clip-path edge sweeps down while the photograph inside
- * counter-moves upward and settles out of a slight over-scale. Because
- * the two layers travel in opposition, the image reads as something
- * that was always there, behind the surface, now being shown — not an
- * asset arriving. The observer sits on the outer, unclipped wrapper;
- * a clipped element has no area and could never trigger it itself.
+ * Deliberately has no moving edge and no direction. A sweeping clip-path
+ * or a slide reads as an effect being performed on the photograph: the
+ * eye follows the edge instead of the picture. Here the frame simply
+ * settles into presence — a long, purely decelerating fade out of a
+ * barely-perceptible over-scale. Nothing arrives, nothing travels; the
+ * image is just *there*, a moment after you look at it.
  */
-export const PanelReveal = ({ children, className = "", delay = 0, testId }) => (
+export const Unveil = ({ children, className = "", delay = 0, testId }) => (
   <motion.div
     className={`relative overflow-hidden ${className}`}
     data-testid={testId}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-12%" }}
+    initial={{ opacity: 0, scale: 1.045 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, margin: "-8%" }}
+    transition={{
+      opacity: { duration: 1.5, ease: EASE, delay },
+      scale: { duration: 2.2, ease: EASE, delay },
+    }}
+    style={{ willChange: "transform, opacity" }}
   >
-    <motion.div
-      className="h-full w-full will-change-[clip-path]"
-      variants={{
-        hidden: { clipPath: "inset(0% 0% 100% 0%)" },
-        visible: {
-          clipPath: "inset(0% 0% 0% 0%)",
-          transition: { duration: 1.35, ease: [0.65, 0, 0.35, 1], delay },
-        },
-      }}
-    >
-      <motion.div
-        className="h-full w-full will-change-transform"
-        variants={{
-          hidden: { y: "-10%", scale: 1.14 },
-          visible: {
-            y: "0%",
-            scale: 1,
-            transition: { duration: 1.9, ease: EASE, delay: delay + 0.06 },
-          },
-        }}
-      >
-        {children}
-      </motion.div>
-    </motion.div>
+    {children}
   </motion.div>
 );
 

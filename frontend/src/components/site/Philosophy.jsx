@@ -12,23 +12,23 @@ import Frame from "./Frame";
 /**
  * Scene 2 — the philosophy.
  * A single full-bleed image is pinned for the whole scene while the
- * heading and four statements fade through over it. The next scene
+ * heading and two statements fade through over it. The next scene
  * then slides up over the held frame like a sheet of paper.
  */
 const STATEMENTS = [
   "A home is never just walls. It is a mood you step into.",
-  "Cared for properly, a house gives something back — light, quiet, and room to breathe.",
-  "So a stay feels less like a booking, and more like a return.",
+  "Which is why a stay should feel less like a booking, and more like a return.",
 ];
 
 // The held frame: a canopy bed at dusk. One unbroken image, held for the
 // whole scene while the words move through it — nothing floats over it.
 const BG_ID = "16_m4mnqx";
 
-// Moments finish by 78% of the scene; the rest is a held frame that
-// the next scene rises over.
+// Moments finish by 62% of the scene; the remainder is a held frame
+// that the next scene rises over. Keep SLOT_END below
+// 1 - (overlap / pinned range) or the sheet covers the last statement.
 const SLOT_START = 0.02;
-const SLOT_END = 0.78;
+const SLOT_END = 0.62;
 
 function Moment({ progress, index, total, children, testId, className = "" }) {
   const slot = (SLOT_END - SLOT_START) / total;
@@ -119,7 +119,7 @@ export default function Philosophy() {
       ref={ref}
       data-testid="philosophy-section"
       className="relative z-0 bg-anahom-charcoal"
-      style={{ height: "500vh" }}
+      style={{ height: "320svh" }}
     >
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* The held frame — one image, held for the whole scene */}
@@ -148,7 +148,7 @@ export default function Philosophy() {
           </div>
         </Moment>
 
-        {/* Moments 1–4 — the statements, over the same held image */}
+        {/* The statements, over the same held image */}
         {STATEMENTS.map((text, i) => (
           <Moment
             key={i}

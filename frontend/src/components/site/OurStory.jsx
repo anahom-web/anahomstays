@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { RevealLines, Rise, Overline, PanelReveal } from "./Reveal";
+import { RevealLines, Rise, Overline, Unveil } from "./Reveal";
 import Frame from "./Frame";
 
 /**
  * Scene 3 — where we are now.
  * Rises over the held philosophy frame like a sheet of paper.
  * The collage reads as moments — morning, art, light, calm —
- * drifting at two different depths, each unveiled by a panel wipe.
+ * drifting at two different depths, each settling quietly into view.
  */
 const MOOD = [
   {
@@ -35,9 +35,9 @@ const MOOD = [
 
 function MoodFrame({ mood, index }) {
   return (
-    <PanelReveal testId={`mood-image-${index}`} delay={index * 0.09} className="aspect-[3/4]">
+    <Unveil testId={`mood-image-${index}`} delay={index * 0.09} className="aspect-[3/4]">
       <Frame id={mood.id} pre={mood.pre} w={800} alt={mood.alt} className="h-full w-full" sizes="(min-width: 1024px) 25vw, 45vw" />
-    </PanelReveal>
+    </Unveil>
   );
 }
 
@@ -56,7 +56,7 @@ export default function OurStory() {
       id="story"
       ref={ref}
       data-testid="story-section"
-      className="relative z-10 -mt-[100svh] rounded-t-[2.5rem] md:rounded-t-[3.5rem] bg-anahom-white pt-28 pb-28 md:pt-36 md:pb-40 lg:pt-44 lg:pb-48 px-6 md:px-12 lg:px-24 overflow-hidden"
+      className="relative z-10 -mt-[80svh] rounded-t-[2.5rem] md:rounded-t-[3.5rem] bg-anahom-white pt-28 pb-28 md:pt-36 md:pb-40 lg:pt-44 lg:pb-48 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       <div className="mx-auto max-w-screen-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Moments — a quiet collage at two depths */}

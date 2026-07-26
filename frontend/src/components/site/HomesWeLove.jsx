@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { Overline, RevealChars, PanelReveal, Rise } from "./Reveal";
+import { Overline, RevealChars, Unveil, Rise } from "./Reveal";
 import Frame from "./Frame";
 
 /**
@@ -43,11 +43,11 @@ function Study({ study, index }) {
 
   return (
     <div ref={ref} data-testid={`home-card-${index}`} className={`relative w-full ${study.layout}`}>
-      <PanelReveal className={study.ratio}>
+      <Unveil className={study.ratio}>
         <motion.div style={{ y }} className="absolute -inset-y-[6%] inset-x-0 will-change-transform">
           <Frame id={study.id} w={1300} alt={study.alt} className="h-full w-full" sizes="(min-width: 768px) 60vw, 100vw" />
         </motion.div>
-      </PanelReveal>
+      </Unveil>
     </div>
   );
 }
