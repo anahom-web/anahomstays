@@ -1,0 +1,166 @@
+{
+  "brand": {
+    "name": "Anahom Stays",
+    "personality": "Calm, Grounded, Thoughtful, Honest, Warm, Intentional, Quiet Confidence, Human, Timeless, Architectural, Natural.",
+    "anti_patterns": "Corporate, loud, startup-like, salesy, AI-sounding, bright colors, gradients, default vercel/stripe look.",
+    "references": "Apple, Aman Resorts, Aesop, Kinfolk, Airbnb Luxe."
+  },
+  "art_direction": {
+    "concept": "A scroll-driven storytelling experience (scrollytelling) that feels like reading a beautifully designed, timeless coffee-table book. Every scroll reveals a new chapter with meaningful motion and subtle interactions.",
+    "aesthetic": "Luxury is restraint. Editorial layout, large margins, beautiful rhythm, muted earthy palette, cinematic imagery, and sophisticated typography."
+  },
+  "colors": {
+    "description": "A natural, warm, and earthy palette avoiding stark whites or pure blacks. No bright colors or generic gradients.",
+    "palette": {
+      "warm_white": {
+        "hex": "#F9F8F6",
+        "usage": "Primary background for the entire page to give a soft, natural paper feel."
+      },
+      "travertine": {
+        "hex": "#EFECE7",
+        "usage": "Secondary background, surface layers, and subtle section dividers."
+      },
+      "sand": {
+        "hex": "#D4C9BA",
+        "usage": "Soft accents, borders, or muted highlight backgrounds."
+      },
+      "stone": {
+        "hex": "#A39F98",
+        "usage": "Secondary text, muted borders, inactive states."
+      },
+      "muted_olive": {
+        "hex": "#8B8A74",
+        "usage": "Primary brand accent for key interaction points, quiet highlights, or secondary buttons."
+      },
+      "bronze": {
+        "hex": "#A67C52",
+        "usage": "Warm interactive highlights or subtle call-to-action details."
+      },
+      "natural_charcoal": {
+        "hex": "#2C2B29",
+        "usage": "Primary text color, deep dark backgrounds for high-contrast inverted sections. Never use pure black (#000000)."
+      }
+    }
+  },
+  "typography": {
+    "description": "An unexpected but fitting editorial font pairing that avoids overused fonts like Inter, Roboto, or Space Grotesk.",
+    "primary": {
+      "family": "Cormorant Garamond",
+      "type": "serif",
+      "weights": ["300", "400", "500", "600"],
+      "usage": "All headlines, large quotes, numbers, and the Founders' letter. Elegant, high-contrast, editorial."
+    },
+    "secondary": {
+      "family": "Hanken Grotesk",
+      "type": "sans-serif",
+      "weights": ["300", "400", "500"],
+      "usage": "Body copy, captions, UI labels, small navigation links. Clean, modern, highly legible."
+    },
+    "rules": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-none text-natural_charcoal",
+      "h2": "text-3xl md:text-4xl lg:text-5xl font-serif tracking-tight text-natural_charcoal",
+      "h3": "text-xl md:text-2xl font-serif text-natural_charcoal",
+      "body": "text-base md:text-lg font-sans text-natural_charcoal/80 leading-relaxed",
+      "overline": "text-xs md:text-sm font-sans tracking-[0.2em] uppercase text-stone",
+      "letter_spacing": "Always use tracking-tight for large serif headlines. Use wide tracking for overlines."
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous Spacing Philosophy. Use 2-3x more spacing than typical web design.",
+    "container": "Max-width screen-2xl mx-auto, but rely heavily on editorial asymmetric grids.",
+    "margins": "Massive margins. Use px-6 md:px-12 lg:px-24. Section padding should be py-24 md:py-32 lg:py-48.",
+    "grid": "Bento Grid Protocol Mode A (Tetris/Asymmetry). Avoid generic 2-column or 3-column equal grids. Let text breathe in a 4-col span while images take 8-col spans."
+  },
+  "motion_and_interactions": {
+    "scrollytelling_core": "Lenis for smooth momentum scrolling is MANDATORY. Standard browser scroll will ruin the luxury feel.",
+    "animations": {
+      "text_reveal": "Masked line-by-line slide-up reveal. Use Framer Motion to animate text from y: 100% with a clip-path or overflow-hidden wrapper. Stagger the lines.",
+      "image_parallax": "Images must scale slightly (1.05 to 1.0) or shift softly on scroll using useScroll and useTransform.",
+      "clipped_frames": "Images should have an initial clipped aspect ratio (e.g., 3:4) that subtly expands or reveals more of the photo as the user scrolls into the section.",
+      "marquee": "Extremely slow, elegant editorial marquee using Serif font. No standard fast-moving tickers.",
+      "micro_interactions": "Buttons 'breathe' (soft scale). Objects react softly to cursor. Hospitality begins with interaction."
+    }
+  },
+  "section_art_direction": {
+    "1_hero": {
+      "description": "Cinematic fullscreen hero. Cinematic video/image background. Autoplay silent, loop.",
+      "overlay": "bg-natural_charcoal/30. Ensure it does not kill the image, just makes text readable.",
+      "content": "Massive masked line-by-line headline reveal. A 'Scroll to begin' vertical subtle line indicator."
+    },
+    "2_philosophy": {
+      "description": "Numbered manifesto chapters. Warm white background. Oversized serif numbers (01, 02). Staggered text reveals as the user scrolls."
+    },
+    "3_our_story": {
+      "description": "Narrative reveal. Travertine background. Side-by-side or overlapping asymmetric images. Parallax effects on the photos."
+    },
+    "4_homes_we_love": {
+      "description": "Interactive photography gallery. Clipped frames and spotlight hover effects. Let the architectural photography be the hero."
+    },
+    "5_why_choose_anahom": {
+      "description": "Interactive icons or subtle comparison. Use muted olive accents. Clean, restrained, architectural structure."
+    },
+    "6_partnership_models": {
+      "description": "Elegant interactive comparison slider instead of generic SaaS pricing cards. Use bronze and stone colors to differentiate."
+    },
+    "7_our_process": {
+      "description": "Animated abstract house-illustration or step reveal. Each step lights up or draws itself via SVG path animation on scroll."
+    },
+    "8_founders_letter": {
+      "description": "Handwritten-letter feel. Travertine or Sand background. Deep natural charcoal serif typography. Signature animates on load/scroll."
+    },
+    "9_faqs": {
+      "description": "Expandable minimal accordion. 1px stone color borders. No boxes, just elegant typography lines."
+    },
+    "10_contact": {
+      "description": "WhatsApp/Call/Email links + simple restrained form. Ends with a slow editorial marquee."
+    }
+  },
+  "mobile_first_specifics": {
+    "priority": "HIGHEST PRIORITY (QR code traffic).",
+    "touch": "Premium, thumb-friendly tap targets. Smooth native-feeling interactions.",
+    "layout": "Do not cram content. Stack elements elegantly with ample py-16 padding. Prevent images from dominating the full screen height (max 70vh) so text is always in context.",
+    "performance": "Ensure Framer Motion animations do not cause jank on mobile. Use lightweight variants if necessary."
+  },
+  "image_urls": {
+    "hero_cinematic": {
+      "url": "https://images.unsplash.com/photo-1745761320791-5ae142edee8c",
+      "description": "Modern, luxurious house sits among palm trees. Sunlight."
+    },
+    "philosophy_texture": {
+      "url": "https://images.unsplash.com/photo-1533628635777-112b2239b1c7",
+      "description": "White textured plaster/travertine surface for organic background."
+    },
+    "homes_we_love_1": {
+      "url": "https://images.unsplash.com/photo-1730382186479-20d2e2c4b58f",
+      "description": "Modern tropical house with pool."
+    },
+    "homes_we_love_2": {
+      "url": "https://images.unsplash.com/photo-1781806049752-06f3e171790f",
+      "description": "Modern minimalist architectural interior with strong shadows."
+    },
+    "our_story_lifestyle": {
+      "url": "https://images.unsplash.com/photo-1525577288853-c6f0a020a162",
+      "description": "Low angle palm trees in soft morning light."
+    },
+    "general_interior": {
+      "url": "https://images.unsplash.com/photo-1763485956292-7b9bed7b3c10",
+      "description": "Minimalist natural light stone interior."
+    }
+  },
+  "component_instructions": {
+    "ui_library": "Use Shadcn/UI for complex functional elements (accordion, form inputs) but strip all default Vercel-like styling. Remove borders, rounded corners, and harsh shadows. Make them look editorial.",
+    "custom_components": "Build structural layouts (Hero, Marquee, Gallery) using raw HTML/Tailwind and Framer Motion.",
+    "testing": "All interactive and key informational elements MUST include a `data-testid` attribute to facilitate robust automated testing."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "NEVER use generic centered layouts or simplistic gradients.",
+    "NEVER use dark colors as gradients.",
+    "NEVER center align the app container (.App { text-align: center; }).",
+    "ALWAYS create depth through layered design elements with z-index hierarchy.",
+    "ALWAYS use micro-animations on hover states, transitions, parallax, and entrance.",
+    "DO NOT apply universal transitions (e.g., transition: all). Target specific properties.",
+    "Avoid using emoji characters (🤖🧠💭) as icons. Use Lucide, Phosphor, or Heroicons.",
+    "Always rely on the provided image URLs. NEVER use placeholder text for images.",
+    "Use 'sonner' for toast notifications."
+  ]
+}

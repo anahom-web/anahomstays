@@ -1,0 +1,3 @@
+# Single-page app: let React Router handle every path instead of
+# Netlify returning a 404 for deep links. Must stay last.
+/*  /index.html  200

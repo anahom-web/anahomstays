@@ -1,0 +1,43 @@
+# Netlify build configuration.
+#
+# Because this file lives in the repository, Netlify configures itself
+# when the repo is linked — there are no build settings to fill in by
+# hand, and none to get wrong.
+
+[build]
+  # The React app lives in a subfolder, not at the repo root.
+  base    = "frontend"
+  # yarn.lock is the lockfile in this project, so the build uses Yarn —
+  # Netlify installs from the lockfile and gets identical dependencies
+  # to the ones this site was tested with.
+  command = "yarn build"
+  # Relative to `base`, i.e. frontend/build
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Create React App treats warnings as errors when CI is true, which
+  # means a harmless unused variable could block a deploy. Warnings are
+  # still printed in the deploy log — they just don't stop the site
+  # going live.
+  CI = "false"
+
+# Single-page app: every path is served index.html so React Router can
+# handle it, instead of Netlify returning its own 404.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# Fingerprinted assets (main.<hash>.js etc.) can be cached forever —
+# a new build produces a new filename, so visitors always get fresh code.
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
