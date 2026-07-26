@@ -11,6 +11,24 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="preconnect" href="https://res.cloudinary.com" />
+
+        <!-- The opening shot starts downloading immediately, in parallel
+             with the JavaScript, instead of waiting for React to mount and
+             ask for it. imagesrcset mirrors the ladder in Frame.jsx so the
+             browser preloads exactly the size it will actually use. -->
+        <link
+            rel="preload"
+            as="image"
+            fetchpriority="high"
+            href="https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_1600/20_oyfxs5"
+            imagesrcset="
+                https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_640/20_oyfxs5 640w,
+                https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_960/20_oyfxs5 960w,
+                https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_1280/20_oyfxs5 1280w,
+                https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_1600/20_oyfxs5 1600w,
+                https://res.cloudinary.com/dlcijbrpw/image/upload/f_auto,q_auto,w_2000/20_oyfxs5 2000w"
+            imagesizes="100vw"
+        />
         <!-- Have Adobe Fonts (Creative Cloud)? Paste your kit <link> here and
              Acumin Variable Concept will take over from Switzer automatically. -->
         <!--
@@ -49,7 +67,32 @@
             <textarea name="message"></textarea>
         </form>
 
-        <div id="root"></div>
+        <!--
+        First paint. Until React mounts, #root would otherwise be empty
+        and the visitor stares at blank white. This paints the brand's
+        charcoal and the mark straight from the HTML — so the very first
+        frame is Anahom, and it hands over seamlessly to the title card.
+        React replaces everything inside #root, so it removes itself.
+        -->
+        <div id="root">
+            <div
+                style="
+                    position: fixed;
+                    inset: 0;
+                    background: #282521;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                "
+            >
+                <img
+                    src="%PUBLIC_URL%/anahom-logo.png"
+                    alt="Anahom Stays"
+                    width="200"
+                    style="width: 200px; height: auto; opacity: 0.92"
+                />
+            </div>
+        </div>
         <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

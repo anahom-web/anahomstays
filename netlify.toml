@@ -5,15 +5,14 @@
 # hand, and none to get wrong.
 
 [build]
-  # Updated path to match your nested GitHub folder structure
-  base    = "anahom-github-upload/frontend"
+  base    = "frontend"
   
   # yarn.lock is the lockfile in this project, so the build uses Yarn —
   # Netlify installs from the lockfile and gets identical dependencies
   # to the ones this site was tested with.
   command = "yarn build"
   
-  # Relative to `base`, i.e. anahom-github-upload/frontend/build
+  # Relative to `base`, i.e. frontend/build
   publish = "build"
 
 [build.environment]

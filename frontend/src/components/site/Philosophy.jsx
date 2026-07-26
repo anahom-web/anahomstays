@@ -126,7 +126,7 @@ export default function Philosophy() {
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 will-change-transform">
           <Frame
             id={BG_ID}
-            w={1900}
+            w={1600}
             sizes="100vw"
             testId="philosophy-image-1"
             alt="A canopy bed at dusk in a lime-washed Anahom bedroom"

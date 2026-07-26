@@ -72,7 +72,7 @@ export default function HomesWeLove() {
         <motion.div style={{ y: openerY }} className="absolute -inset-y-[10%] inset-x-0 will-change-transform">
           <Frame
             id={OPENER_ID}
-            w={2200}
+            w={2000}
             sizes="100vw"
             alt="An open living space at golden hour, palms beyond the glass"
             className="h-full w-full"

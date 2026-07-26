@@ -3,6 +3,14 @@ import { motion, AnimatePresence, animate, useReducedMotion } from "framer-motio
 import { EASE } from "./Reveal";
 import Logo from "./Logo";
 import { SLOGAN } from "../../lib/brand";
+import { cld } from "../../lib/cloudinary";
+
+/** Matches the <link rel="preload"> in index.html, so this resolves
+ *  from cache rather than starting a second download. */
+const HERO_SRC = cld("20_oyfxs5", 1600);
+/** Never hold the visitor hostage to a slow network. */
+const MAX_WAIT_MS = 6000;
+const MIN_SHOW_MS = 1900;
 
 /**
  * The opening title card — silence, the wordmark, a counter climbing to
@@ -24,13 +32,38 @@ export default function Intro() {
     if (!show || prefersReduced) return;
     window.__lenis?.stop();
     document.documentElement.style.overflow = "hidden";
+
+    let cancelled = false;
     const controls = animate(0, 100, {
-      duration: 2,
+      duration: 1.8,
       ease: [0.65, 0, 0.35, 1],
       onUpdate: (v) => setN(Math.floor(v)),
-      onComplete: () => setTimeout(() => setShow(false), 250),
     });
-    return () => controls.stop();
+
+    // The curtain is a real loading gate: it lifts only once the opening
+    // shot has actually decoded, so the visitor never lands on an empty
+    // frame waiting for a photograph. A hard ceiling means a slow
+    // connection delays the reveal but can never block it.
+    const heroReady = new Promise((resolve) => {
+      const img = new Image();
+      img.src = HERO_SRC;
+      if (img.decode) img.decode().then(resolve).catch(resolve);
+      else {
+        img.onload = resolve;
+        img.onerror = resolve;
+      }
+    });
+    const minimum = new Promise((r) => setTimeout(r, MIN_SHOW_MS));
+    const ceiling = new Promise((r) => setTimeout(r, MAX_WAIT_MS));
+
+    Promise.race([Promise.all([heroReady, minimum]), ceiling]).then(() => {
+      if (!cancelled) setShow(false);
+    });
+
+    return () => {
+      cancelled = true;
+      controls.stop();
+    };
   }, [show, prefersReduced]);
 
   useEffect(() => {

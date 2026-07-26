@@ -45,7 +45,7 @@ export default function Hero() {
         <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 will-change-transform">
           <Frame
             id={HERO_ID}
-            w={2200}
+            w={2000}
             eager
             priority
             sizes="100vw"
