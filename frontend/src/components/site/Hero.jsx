@@ -98,7 +98,7 @@ export default function Hero() {
           <RevealChars
             as="h1"
             delay={0.4}
-            lines={["It begins", "with home."]}
+            lines={["A house", "that breathes."]}
             className="font-display font-light text-anahom-white text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] leading-[0.95] tracking-tight max-w-5xl drop-shadow-sm"
           />
 
@@ -114,7 +114,7 @@ export default function Hero() {
                 data-testid="hero-cta"
                 className="group inline-flex items-center gap-3 self-start bg-anahom-white text-anahom-charcoal font-sans text-sm tracking-wide px-7 py-3.5 rounded-full hover:bg-anahom-bronze hover:text-anahom-white transition-colors duration-500"
               >
-                Begin the story
+                Walk through
                 <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
               </a>
             </Magnetic>
@@ -127,8 +127,7 @@ export default function Hero() {
           className="absolute inset-0 z-10 flex items-center justify-center px-6 md:px-12"
         >
           <p className="font-display font-light text-anahom-white text-3xl md:text-5xl lg:text-[3.2rem] leading-[1.35] text-center max-w-4xl">
-            Anahom began with a simple belief —{" "}
-            <span className="italic">the places we stay should leave us calmer than they found us.</span>
+            A place should leave you calmer than it found you.
           </p>
         </motion.div>
 

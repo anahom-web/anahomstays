@@ -16,7 +16,7 @@ export default function Footer() {
             <Logo height={32} />
           </a>
           <p className="mt-2 font-sans text-sm text-anahom-white/40 max-w-xs">
-            A conscious living brand. Goa.
+            Homes kept quietly. Goa.
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-8 gap-y-3 font-sans text-sm text-anahom-white/55">

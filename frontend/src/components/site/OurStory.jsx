@@ -15,10 +15,12 @@ const MOOD = [
     alt: "Morning sun through linen curtains, coffee waiting by the bed",
   },
   {
-    // Real wall art from the homes — a hand-textured plaster relief.
-    id: "22_v9i6et",
-    pre: "c_fill,ar_3:4,g_auto,w_1200/e_brightness:12",
-    alt: "A hand-textured plaster relief hung on a quiet wall",
+    // A room, not an object: the sofa, the shelves, the olive tree by
+    // the window. The source is landscape, so it is filled to the
+    // tile's portrait ratio rather than letterboxed into it.
+    id: "ChatGPT_Image_Jul_19_2026_at_07_16_55_PM_lmpdgl",
+    pre: "c_fill,ar_3:4,g_auto,w_1200",
+    alt: "A living room corner — a low sofa, open shelves and an olive tree by the window",
   },
   {
     id: "19_fk1s2i",
@@ -79,19 +81,17 @@ export default function OurStory() {
           <RevealLines
             as="h2"
             className="mt-6 font-display font-light text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-anahom-charcoal"
-            lines={["The first", "chapter."]}
+            lines={["Early, and", "unhurried."]}
           />
           <div className="mt-10 space-y-6 max-w-xl">
             <Rise delay={0.05}>
               <p className="font-sans text-lg text-anahom-charcoal/75 leading-relaxed">
-                Anahom is starting with a handful of homes in Goa —
-                chosen carefully, and looked after properly.
+                A few homes in Goa. Chosen slowly. Kept well.
               </p>
             </Rise>
             <Rise delay={0.14}>
               <p className="font-sans font-light text-2xl md:text-3xl text-anahom-charcoal leading-snug pt-2">
-                If you own a home that sits empty — or know someone who does —
-                we would like to meet it.
+                If a house you know is standing empty, we would like to meet it.
               </p>
             </Rise>
           </div>

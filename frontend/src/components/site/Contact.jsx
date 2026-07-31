@@ -102,7 +102,7 @@ export default function Contact() {
           <RevealLines
             as="h2"
             className="font-display font-light text-[clamp(2.6rem,7vw,6.5rem)] leading-[1.02] tracking-tight text-anahom-white"
-            lines={["If you know a home", "that deserves better."]}
+            lines={["If a house is waiting,", "tell us about it."]}
           />
         </div>
 
@@ -126,7 +126,7 @@ export default function Contact() {
               ))}
             </div>
             <p className="mt-10 font-sans text-sm text-anahom-white/45 leading-relaxed max-w-xs">
-              Every enquiry is read by the founders — and answered personally.
+              Read by us. Answered by us.
             </p>
           </div>
 
@@ -194,7 +194,7 @@ export default function Contact() {
                   onChange={onChange}
                   rows={4}
                   data-testid="contact-message"
-                  placeholder="Tell us a little about your home..."
+                  placeholder="A few words about the house."
                   className="w-full bg-transparent border-b border-anahom-white/20 py-3 font-sans text-xl text-anahom-white placeholder:text-anahom-white/25 focus:outline-none focus:border-anahom-bronze transition-colors duration-500 resize-none"
                 />
               </div>
@@ -206,7 +206,7 @@ export default function Contact() {
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center gap-3 bg-anahom-white text-anahom-charcoal font-sans text-sm tracking-wide px-8 py-4 rounded-full hover:bg-anahom-bronze hover:text-anahom-white transition-colors duration-500 disabled:opacity-50"
                 >
-                  {loading ? "Sending..." : "Send with care"}
+                  {loading ? "Sending..." : "Send the note"}
                   <span>→</span>
                 </motion.button>
               </Magnetic>

@@ -14,17 +14,19 @@ const BG_CONVICTIONS_ID = "ChatGPT_Image_Jul_19_2026_at_07_10_16_PM_xqf7ks";
 const BG_JOURNEY_ID = "24_taehfm";
 
 const PRINCIPLES = [
-  { icon: Home, title: "A few homes, not a portfolio", body: "Chosen with intention — never counted, never collected." },
-  { icon: Wallet, title: "We invest, you don't", body: "The renovation, the furnishing, the photography — all carried by us." },
-  { icon: Handshake, title: "Clear terms, no fine print", body: "Honest reporting, and an agreement you can read in one sitting." },
-  { icon: HeartHandshake, title: "Cared for as our own", body: "Kept beautiful, maintained, and returned better than we found it." },
+  { icon: Home, title: "A few, not many", body: "Homes are chosen. Never collected." },
+  { icon: Wallet, title: "We invest, you don't", body: "Restoration, furnishing, photography — ours to carry." },
+  { icon: Handshake, title: "Nothing hidden", body: "One page. Plain language. Honest numbers." },
+  { icon: HeartHandshake, title: "Kept as our own", body: "Returned better than we found it." },
 ];
 
+// Written so a homeowner knows exactly what happens, in order.
+// No riddles: each line says who does what.
 const JOURNEY = [
-  { t: "Talk", d: "A conversation about your home, and what it could become." },
-  { t: "Transform", d: "We renovate and furnish it completely, at our cost." },
-  { t: "Host", d: "We look after the guests, the upkeep, and every detail of the stay." },
-  { t: "Grow together", d: "A long partnership, built on openness and shared success." },
+  { t: "Meet", d: "We visit the house and talk it through with you." },
+  { t: "Restore", d: "We repair, furnish and photograph it. Our cost." },
+  { t: "Keep", d: "We host the guests and handle the upkeep." },
+  { t: "Stay", d: "We stay for years, not a season." },
 ];
 
 function Principle({ item, index }) {
@@ -41,21 +43,17 @@ function Principle({ item, index }) {
       ref={ref}
       style={{ opacity }}
       data-testid={`different-item-${index}`}
-      className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-start border-t border-anahom-white/10 py-9 md:py-11"
+      className="border-t border-anahom-white/10 pt-8 md:pt-10"
     >
-      <div className="sm:col-span-2">
-        <span className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-anahom-bronze/40">
-          <Icon className="w-6 h-6 text-anahom-bronze" strokeWidth={1.1} />
-        </span>
-      </div>
-      <div className="sm:col-span-10">
-        <h3 className="font-display text-2xl md:text-4xl leading-[1.12] tracking-tight text-anahom-white">
-          {item.title}
-        </h3>
-        <p className="mt-3 font-sans text-base md:text-lg text-anahom-white/55 leading-relaxed max-w-xl">
-          {item.body}
-        </p>
-      </div>
+      <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-anahom-bronze/40">
+        <Icon className="w-5 h-5 text-anahom-bronze" strokeWidth={1.1} />
+      </span>
+      <h3 className="mt-6 font-display text-2xl md:text-3xl leading-[1.12] tracking-tight text-anahom-white">
+        {item.title}
+      </h3>
+      <p className="mt-3 font-sans text-base md:text-lg text-anahom-white/55 leading-relaxed max-w-sm">
+        {item.body}
+      </p>
     </motion.div>
   );
 }
@@ -144,46 +142,36 @@ export default function WhatMakesDifferent() {
       <div className="relative z-10 px-6 md:px-12 lg:px-24 mx-auto max-w-screen-2xl">
         {/* Scene header */}
         <div className="max-w-3xl mb-20 md:mb-28">
-          <Overline className="text-anahom-sand/70">How We Work</Overline>
+          <Overline className="text-anahom-sand/70">Why Anahom</Overline>
           <RevealLines
             as="h2"
             className="mt-6 font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight"
-            lines={["The Anahom", "Way."]}
+            lines={["How we keep", "a home."]}
           />
           <p className="mt-8 font-sans text-lg text-anahom-white/60 leading-relaxed max-w-md">
             A few things we believe, and four simple steps.
           </p>
         </div>
 
-        {/* Part one — the convictions */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-28 md:mb-40">
-          <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28">
-              <span className="inline-block text-xs font-sans tracking-[0.28em] uppercase text-anahom-sand/70">
-                What Guides Us
-              </span>
-              <p className="mt-6 font-sans text-base text-anahom-white/60 leading-relaxed max-w-xs">
-                The things we won&rsquo;t compromise on.
-              </p>
-            </div>
-          </div>
-          <div className="lg:col-span-8">
-            {PRINCIPLES.map((item, i) => (
-              <Principle key={i} item={item} index={i} />
-            ))}
-          </div>
+        {/* Part one — the convictions.
+            No second heading here: the scene title above already opened
+            this, and stacking another label under it read as two
+            headings competing on one screen. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 md:gap-x-20 gap-y-12 md:gap-y-16 mb-28 md:mb-40">
+          {PRINCIPLES.map((item, i) => (
+            <Principle key={i} item={item} index={i} />
+          ))}
         </div>
 
         {/* Part two — the journey */}
         <div id="process" data-testid="process-section">
+          {/* One heading, not a label stacked on a heading. The plain
+              line is the useful one, so it becomes the heading. */}
           <div className="text-center mb-8 md:mb-12">
-            <span className="inline-block text-xs font-sans tracking-[0.28em] uppercase text-anahom-sand/70">
-              What Partnership Looks Like
-            </span>
             <RevealLines
               as="h3"
-              className="mt-5 font-display font-light text-4xl md:text-5xl leading-[1.05] tracking-tight"
-              lines={["A journey, not a checklist."]}
+              className="font-display font-light text-4xl md:text-5xl leading-[1.05] tracking-tight"
+              lines={["What partnership looks like."]}
             />
           </div>
 

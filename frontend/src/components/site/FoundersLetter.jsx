@@ -21,20 +21,20 @@ export default function FoundersLetter() {
         <RevealLines
           as="p"
           className="font-display font-light text-3xl md:text-4xl leading-[1.3] text-anahom-charcoal"
-          lines={["Dear friend,", "a note on why Anahom exists —"]}
+          lines={["Dear friend,", "why we began —"]}
         />
 
         <div className="mt-12 space-y-8 font-sans text-lg md:text-xl text-anahom-charcoal/80 leading-[1.6]">
           <Rise delay={0.05}>
             <p>
-              Anahom grew from a simple conviction: that hospitality, at its best, is the
-              quiet art of looking after homes — and the people in them.
+              Hospitality, at its best, is care made invisible. That is the whole of
+              what we are trying to do.
             </p>
           </Rise>
           <Rise delay={0.14}>
             <p>
-              We are at the very beginning. If you have a home you love, and would rather
-              it were cared for than simply let, it would be a privilege to start with you.
+              We are early. If you have a home you love, and would rather it were kept
+              than let, we would be glad to begin with you.
             </p>
           </Rise>
         </div>
