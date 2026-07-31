@@ -1,6 +1,7 @@
-/* Only the founders' handwritten signature comes from Google. The brand
-   faces — Melodrama and Switzer/Acumin — are self-hosted below. */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap');
+/* The founders' signature face (Dancing Script) is loaded from a <link>
+   in public/index.html, not an @import here — an @import forces the
+   browser to fetch this stylesheet, parse it, fetch a second stylesheet
+   and only then the font. The brand faces are self-hosted below. */
 
 @tailwind base;
 @tailwind components;

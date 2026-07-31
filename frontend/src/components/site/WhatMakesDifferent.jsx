@@ -16,7 +16,9 @@ const BG_JOURNEY_ID = "24_taehfm";
 const PRINCIPLES = [
   { icon: Home, title: "A few, not many", body: "Homes are chosen. Never collected." },
   { icon: Wallet, title: "We invest, you don't", body: "Restoration, furnishing, photography — ours to carry." },
-  { icon: Handshake, title: "Nothing hidden", body: "One page. Plain language. Honest numbers." },
+  // Claiming honesty is what someone hiding something does. So this
+  // makes one specific, checkable promise instead of three adjectives.
+  { icon: Handshake, title: "Nothing hidden", body: "You see the same numbers we do." },
   { icon: HeartHandshake, title: "Kept as our own", body: "Returned better than we found it." },
 ];
 

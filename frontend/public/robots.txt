@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anahomstays.com/sitemap.xml

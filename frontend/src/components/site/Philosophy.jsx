@@ -15,9 +15,13 @@ import Frame from "./Frame";
  * heading and two statements fade through over it. The next scene
  * then slides up over the held frame like a sheet of paper.
  */
+// Written for the person deciding whether to hand over their house,
+// not for the guest. The last statement is a doorway, not a full stop:
+// it names what the whole site is about to show, so the scene hands the
+// reader on rather than closing the thought and stalling them here.
 const STATEMENTS = [
-  "A home is never just walls. It is a mood you step into.",
-  "Which is why a stay should feel less like a booking, and more like a return.",
+  "So does everyone who walks through the door. It is the first thing they feel.",
+  "Everything that follows is in service of that feeling.",
 ];
 
 // The held frame: a canopy bed at dusk. One unbroken image, held for the
@@ -70,9 +74,9 @@ function StaticPhilosophy() {
       className="relative bg-anahom-charcoal text-anahom-white py-28 px-6 md:px-12 lg:px-24"
     >
       <div className="mx-auto max-w-screen-2xl">
-        <Overline className="text-anahom-sand/70">What Anahom Means</Overline>
+        <Overline className="text-anahom-sand/70">What We Believe</Overline>
         <h2 className="mt-6 font-display font-light text-4xl md:text-6xl leading-[1.05] tracking-tight">
-          The name holds our whole belief.
+          A house knows when it is cared for.
         </h2>
         <Frame
           id={BG_ID}
@@ -145,11 +149,11 @@ export default function Philosophy() {
         {/* Moment 0 — the scene title */}
         <Moment progress={scrollYProgress} index={0} total={total}>
           <div className="text-center">
-            <Overline className="text-anahom-sand/80">What Anahom Means</Overline>
+            <Overline className="text-anahom-sand/80">What We Believe</Overline>
             <RevealLines
               as="h2"
               className="mt-6 font-display font-light text-4xl md:text-6xl lg:text-7xl leading-[1.04] tracking-tight text-anahom-white"
-              lines={["The name holds", "our whole belief."]}
+              lines={["A house knows", "when it is cared for."]}
             />
           </div>
         </Moment>

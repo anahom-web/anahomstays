@@ -1,6 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import Nav from "../components/site/Nav";
-import Intro from "../components/site/Intro";
+import Preloader from "../components/site/Preloader";
 import Cursor from "../components/site/Cursor";
 import Hero from "../components/site/Hero";
 import Philosophy from "../components/site/Philosophy";
@@ -27,7 +27,7 @@ export default function Home() {
         >
           Skip to content
         </a>
-        <Intro />
+        <Preloader />
         <Cursor />
         <Nav />
         <main id="main">

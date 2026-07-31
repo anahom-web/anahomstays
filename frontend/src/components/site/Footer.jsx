@@ -15,9 +15,6 @@ export default function Footer() {
           <a href="#top" aria-label="Anahom Stays — back to top" className="inline-block">
             <Logo height={32} />
           </a>
-          <p className="mt-2 font-sans text-sm text-anahom-white/40 max-w-xs">
-            Homes kept quietly. Goa.
-          </p>
         </div>
         <nav className="flex flex-wrap gap-x-8 gap-y-3 font-sans text-sm text-anahom-white/55">
           <a href="#philosophy" className="link-underline">Philosophy</a>

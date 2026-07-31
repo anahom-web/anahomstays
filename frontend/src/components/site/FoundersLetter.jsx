@@ -18,23 +18,36 @@ export default function FoundersLetter() {
           <Overline>A Letter From The Founders</Overline>
         </div>
 
+        {/* A heading, not a paragraph: every other scene contributes an
+            h2 to the outline and this one was silently missing from it. */}
         <RevealLines
-          as="p"
+          as="h2"
           className="font-display font-light text-3xl md:text-4xl leading-[1.3] text-anahom-charcoal"
           lines={["Dear friend,", "why we began —"]}
         />
 
         <div className="mt-12 space-y-8 font-sans text-lg md:text-xl text-anahom-charcoal/80 leading-[1.6]">
           <Rise delay={0.05}>
+            <p>We came to Goa for a few weeks. We stayed.</p>
+          </Rise>
+          <Rise delay={0.12}>
             <p>
-              Hospitality, at its best, is care made invisible. That is the whole of
-              what we are trying to do.
+              It was not the beaches. It was the pace — mornings that begin slowly,
+              evenings that arrive without a schedule. Living here teaches you a calm
+              that a city never will, and that is the thing worth passing on.
             </p>
           </Rise>
-          <Rise delay={0.14}>
+          <Rise delay={0.19}>
             <p>
-              We are early. If you have a home you love, and would rather it were kept
-              than let, we would be glad to begin with you.
+              So we set out to make spaces you feel before anyone explains them — where
+              the light, the linen and the quiet all say the same thing. Where every
+              detail speaks.
+            </p>
+          </Rise>
+          <Rise delay={0.26}>
+            <p>
+              That is the whole of it. If your home could hold that, we would love to
+              hear from you.
             </p>
           </Rise>
         </div>
